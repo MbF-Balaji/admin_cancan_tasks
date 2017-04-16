@@ -1,0 +1,21 @@
+<% if current_user.nil? %>
+	<%= link_to new_user_session_path, class: 'login-button' do %>Sign in<% end %>
+<% else %>
+	<%= link_to app_dashboard_index_path, class: 'login-button' do %>Go to App<% end %>
+<% end %>
+<% if current_user.superadmin_role? || current_user.supervisor_role? %>
+	<p>Visible only for superadmins and supervisors! </p>
+<% end %>
+<h1>Jobs</h1>
+
+
+<% @jobs.each do |job| %>
+  <div class="job">
+    <h2><%= link_to job.title, job.url %></h2>
+    <p><%= job.company %></p>
+  </div>
+<% end %>
+
+<p><%= link_to "Add a job", new_job_path %></p>
+<p><%= paginate @jobs %></p>
+http://codepany.com/blog/rails-5-user-accounts-with-3-types-of-roles-devise-rails_admin-cancancan/

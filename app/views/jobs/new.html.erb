@@ -1,0 +1,6 @@
+<%= form_for @job do |f| %>
+   Title:        <%= f.text_field :title %><br />
+   Company_Name: <%= f.text_field :company %><br />
+   Url:          <%= f.text_field :url %><br /> 
+ <%= f.button :submit %>
+<% end %>
